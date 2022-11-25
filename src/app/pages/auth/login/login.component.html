@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Inicie sesión</mat-card-title>
+  <mat-card-content>
+    <div class="px-20">
+      <form class="row" [formGroup]="form" (ngSubmit)="submitlogin()">
+        <mat-form-field class="mt-10" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="pepitoperez@gmail.com" value="" formControlName="email" minlength="4">
+        </mat-form-field>
+
+        <mat-form-field class="mt-5" appearance="fill">
+            <mat-label>Clave</mat-label>
+            <input matInput placeholder="miClaveCompleja123" value="" formControlName="password" minlength="8" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <app-button 
+          [disabled]="form.invalid"
+          label="Iniciar sesión">
+        </app-button>
+      </form>
+    </div>
+    
+  </mat-card-content>
+</mat-card>

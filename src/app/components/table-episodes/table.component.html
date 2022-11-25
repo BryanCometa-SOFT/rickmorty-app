@@ -1,0 +1,42 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Id -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Nombre -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- Episodio -->
+      <ng-container matColumnDef="episode">
+        <th mat-header-cell *matHeaderCellDef> Episodio </th>
+        <td mat-cell *matCellDef="let element"> {{element.episode}} </td>
+      </ng-container>
+
+      <!-- Episodio -->
+      <ng-container matColumnDef="characters">
+        <th mat-header-cell *matHeaderCellDef> Personajes por capitulo </th>
+        <td mat-cell *matCellDef="let element">     
+          <app-button 
+            class="mx-5" 
+            label="Ver personajes" 
+            (outputClick)="redirectUrl('/characters/'+element.id)">
+          </app-button>  
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator 
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons 
+        aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

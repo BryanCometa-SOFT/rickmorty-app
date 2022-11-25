@@ -1,0 +1,10 @@
+<div>
+    <button 
+        mat-raised-button 
+        [class]="class"
+        [color]="color" 
+        [disabled]="disabled"
+        (click)="outputClick.emit(true)">
+        {{ label }}
+    </button>
+</div>
