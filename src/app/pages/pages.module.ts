@@ -20,19 +20,19 @@ import { MaterialModule } from '../material/material.module';
  **/
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { HomeComponent } from './home/home.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { FavoritesCharacterComponent } from './chracters/favorites-character/favorites-character.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CharactersEpisodeComponent } from './characters-episode/characters-episode.component';
+import { DetailsCharacterComponent } from './chracters/details/details-character.component';
+import { HomeCharacterComponent } from './chracters/home-character/home-character.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
-    FavoritesComponent,
-    CharactersEpisodeComponent
+    FavoritesCharacterComponent,
+    DetailsCharacterComponent,
+    HomeCharacterComponent
   ],
   imports: [
     CommonModule,

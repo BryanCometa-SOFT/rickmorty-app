@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { AddFavorite } from '../interfaces/addFavorite';
 import { BaseService } from './base.service';
@@ -6,7 +7,7 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class FavoriteService extends BaseService {
+export class CharacterService extends BaseService{
 
   urlBase: string = "Seleccion/";
 
@@ -15,7 +16,23 @@ export class FavoriteService extends BaseService {
 	super(httpClient);
   }
 
+  /**
+	 * @description Obtiene y descarga todos los personajes según la página por id
+	*/
+	public async getAllCharacters(id:string): Promise<any> {
+		const result = await this.getMirror("character?page="+id,0);
+		// Retorno la respuesta
+		return result;
+	}
 
+	/**
+	 * @description Obtiene y descarga los desatalles del personaje por id
+	*/
+	public async getCharactersDetail(id:string): Promise<any> {
+		const result = await this.getMirror("character/"+id,0);
+		// Retorno la respuesta
+		return result;
+	}
 
   /**
 	 * @description Obtiene y descarga el listado de personajes
@@ -26,7 +43,7 @@ export class FavoriteService extends BaseService {
 		return result;
 	}
 
-	/**
+  /**
 	 * @description agrega los personajes favoritos
 	*/
 	public async addFavorite(data:AddFavorite): Promise<any> {
@@ -35,4 +52,5 @@ export class FavoriteService extends BaseService {
 		// Retorno la respuesta
 		return result;
 	}
+
 }

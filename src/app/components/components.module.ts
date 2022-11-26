@@ -8,14 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 
 //Components
-import { TableComponent } from './table-episodes/table.component';
 import { ButtonComponent } from './button/button.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
   declarations: [
-    TableComponent,
     ToolbarComponent,
     ButtonComponent,
   ],
@@ -26,7 +24,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MaterialModule
   ],
   exports: [
-    TableComponent,
     ToolbarComponent,
     ButtonComponent
   ]

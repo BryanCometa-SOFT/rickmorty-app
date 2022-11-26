@@ -2,47 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Chanracters } from 'src/app/interfaces/characters';
 import { EStorageKeys } from 'src/app/interfaces/estorageKey';
-import { TableModel } from 'src/app/interfaces/table';
 import { StorageProvider } from 'src/app/providers/storage.provider';
-import { EpisodeService } from 'src/app/services/episode.service';
+import { CharacterService } from 'src/app/services/character.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-characters-episode',
-  templateUrl: './characters-episode.component.html',
-  styleUrls: ['./characters-episode.component.css']
+  selector: 'app-details-character',
+  templateUrl: './details-character.component.html',
+  styleUrls: ['./details-character.component.css']
 })
-export class CharactersEpisodeComponent implements OnInit {
+export class DetailsCharacterComponent implements OnInit {
 
-  dataEpisode:TableModel|null = null;
   characters:Array<Chanracters> | null = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private episodeService: EpisodeService, private favoriteService:FavoriteService,private storage: StorageProvider) { }
+
+  constructor(private activatedRoute: ActivatedRoute, private characterService: CharacterService, private favoriteService:FavoriteService,private storage: StorageProvider) { }
 
   ngOnInit(): void {
-    this.getAllEpisodes(this.activatedRoute.snapshot.params["id"]);
+    this.getCharactersDetail(this.activatedRoute.snapshot.params["id"]);
   }
 
-  /**
-	* @description Obtiene y descarga un episodio por id
-	*/
-  getAllEpisodes(id:string): void{
-    this.episodeService.getEpisodes(id).then(resp=>{
-      resp.characters.forEach((element: string) => {
-        const id = element.replace("https://rickandmortyapi.com/api/character/","");
-        this.getCharacters(id);
-      });
-    }).catch(error=>{
-      console.log(error);
-    })
-  }
+
 
   /**
-	* @description Obtiene y los datos de un personaje por episodio por id
+	* @description Obtiene y los datos de un personaje por id
 	*/
-  getCharacters(id:string): void{
-    this.episodeService.getCharacters(id).then(resp=>{
+  getCharactersDetail(id:string): void{
+    this.characterService.getCharactersDetail(id).then(resp=>{
       this.characters?.push(resp);
     }).catch(error=>{
       console.log(error);
@@ -50,7 +37,7 @@ export class CharactersEpisodeComponent implements OnInit {
   }
 
   /**
-	* @description agrega los episodios favoritos
+	* @description agrega los personajes favoritos
 	*/
   addFavorite(id:number): void{
     Swal.fire({
@@ -71,7 +58,7 @@ export class CharactersEpisodeComponent implements OnInit {
         icon: 'success',
         text: 'El personaje fue agregado correctamente a favoritos',
         timer: 5000
-      }); 
+      });
     }).catch((error: any)=>{
       console.log(error);
       Swal.fire({
