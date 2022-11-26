@@ -18,6 +18,13 @@
     <app-button
         class="mx-5"
         color="link"
+        label="Perfil"
+        (outputClick)="redirectUrl('/profile')"
+        *ngIf="isLoged">
+    </app-button>
+    <app-button
+        class="mx-5"
+        color="link"
         label="Iniciar sesión"
         (outputClick)="redirectUrl('/login')"
         *ngIf="!isLoged">

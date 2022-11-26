@@ -6,18 +6,18 @@ import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   hide: any = "text"
   form: FormGroup = new FormGroup({
     name: new FormControl("" , [Validators.required]),
     email: new FormControl("" , [Validators.required]),
-    password: new FormControl("", [Validators.required]),
-    confirm_password: new FormControl("", [Validators.required]),
+    birthdate: new FormControl("", [Validators.required]),
+    city: new FormControl("", [Validators.required]),
   });
 
   constructor(private authService: AuthService, private router: Router) { }

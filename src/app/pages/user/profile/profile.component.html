@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>Actualizar perfil</mat-card-title>
+  <mat-card-content>
+      <div class="px-20">
+          <form class="row" [formGroup]="form" (ngSubmit)="submitRegister()">
+              <mat-form-field class="mt-10" appearance="fill">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput placeholder="Perez" value="" formControlName="name" minlength="4">
+              </mat-form-field>
+              <mat-form-field class="mt-10" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="pepitoperez@gmail.com" value="" type="email" formControlName="email" minlength="4">
+              </mat-form-field>
+              <mat-form-field  class="mt-10" appearance="fill" >
+                <mat-label>Fecha de cumpleaños</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="birthdate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="mt-10" appearance="fill">
+                <mat-label>Ciudad</mat-label>
+                <input matInput placeholder="Bogotá" value="" formControlName="city" minlength="4">
+              </mat-form-field>
+              <app-button
+                  label="Registrar"
+                  [disabled]="form.invalid">
+              </app-button>
+          </form>
+      </div>
+  </mat-card-content>
+</mat-card>

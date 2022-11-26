@@ -9,6 +9,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DetailsCharacterComponent } from './chracters/details/details-character.component';
 import { FavoritesCharacterComponent } from './chracters/favorites-character/favorites-character.component';
 import { HomeCharacterComponent } from './chracters/home-character/home-character.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'home', component: HomeCharacterComponent },
       { path: 'characters/:id', component: DetailsCharacterComponent },
       { path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       //{ path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: 'login' }
     ]

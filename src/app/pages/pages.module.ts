@@ -24,6 +24,7 @@ import { FavoritesCharacterComponent } from './chracters/favorites-character/fav
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsCharacterComponent } from './chracters/details/details-character.component';
 import { HomeCharacterComponent } from './chracters/home-character/home-character.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeCharacterComponent } from './chracters/home-character/home-characte
     RegisterComponent,
     FavoritesCharacterComponent,
     DetailsCharacterComponent,
-    HomeCharacterComponent
+    HomeCharacterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
