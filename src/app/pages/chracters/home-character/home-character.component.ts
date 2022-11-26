@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chanracters } from 'src/app/interfaces/characters';
 import { EStorageKeys } from 'src/app/interfaces/estorageKey';
 import { StorageProvider } from 'src/app/providers/storage.provider';
 import { CharacterService } from 'src/app/services/character.service';
-import { FavoriteService } from 'src/app/services/favorite.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,8 +17,7 @@ export class HomeCharacterComponent implements OnInit {
   page:number = 1;
   info:any = null;
 
-
-  constructor(private activatedRoute: ActivatedRoute, private characterService: CharacterService, private favoriteService:FavoriteService,private storage: StorageProvider) { }
+  constructor(private characterService: CharacterService,private storage: StorageProvider,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCharacters();
@@ -61,6 +59,11 @@ export class HomeCharacterComponent implements OnInit {
 	* @description Obtiene y el listado de personajes y las url next y back
 	*/
   getAllCharacters(): void{
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor',
+    });
     this.characterService.getAllCharacters(this.page.toString()).then(resp=>{
       console.log(resp);
       this.characters = resp.results;
@@ -69,6 +72,7 @@ export class HomeCharacterComponent implements OnInit {
     }).catch(error=>{
       console.log(error);
     })
+    Swal.close();
   }
 
   /**
@@ -88,7 +92,7 @@ export class HomeCharacterComponent implements OnInit {
       usuario: dataUser?.e_MAIL,
     }
 
-    this.favoriteService.addFavorite(data).then((resp)=>{
+    this.characterService.addFavorite(data).then((resp)=>{
       Swal.fire({
         icon: 'success',
         text: 'El personaje fue agregado correctamente a favoritos',
@@ -103,4 +107,13 @@ export class HomeCharacterComponent implements OnInit {
       });
     })
   }
+
+    /**
+   * redirectUrl
+   * @param router Parametro con la navegacion
+   */
+     redirectUrl(url: string) : void{
+      console.log(url);
+      this.router.navigate([url]);
+    }
 }

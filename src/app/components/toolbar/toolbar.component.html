@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-    <span>Prueba Angular</span>
+    <span>Prueba</span>
     <span class="toolbar-spacer"></span>
     <app-button
         class="mx-5"
         color="link"
         label="Inicio"
-        (outputClick)="redirectUrl('/characters/1')"
+        (outputClick)="redirectUrl('/home')"
         *ngIf="isLoged">
     </app-button>
     <app-button

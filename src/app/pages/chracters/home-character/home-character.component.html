@@ -15,7 +15,7 @@
       </mat-card-header>
       <mat-card-actions>
         <div class="d-flex justify-content-around">
-          <app-button class="" label="Ver detalles" color='primary'>
+          <app-button class="" label="Ver detalles" color='primary' (outputClick)="redirectUrl('/characters/'+item?.id)">
           </app-button>
           <app-button class="" color="warn" label="Guardar como favorito" (outputClick)="addFavorite(item.id)">
           </app-button>
@@ -31,6 +31,4 @@
       </app-button>
     </div>
   </div>
-
-
 </section>

@@ -4,7 +4,6 @@ import { Chanracters } from 'src/app/interfaces/characters';
 import { EStorageKeys } from 'src/app/interfaces/estorageKey';
 import { StorageProvider } from 'src/app/providers/storage.provider';
 import { CharacterService } from 'src/app/services/character.service';
-import { FavoriteService } from 'src/app/services/favorite.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,14 +15,11 @@ export class DetailsCharacterComponent implements OnInit {
 
   characters:Array<Chanracters> | null = [];
 
-
-  constructor(private activatedRoute: ActivatedRoute, private characterService: CharacterService, private favoriteService:FavoriteService,private storage: StorageProvider) { }
+  constructor(private activatedRoute: ActivatedRoute, private characterService: CharacterService,private storage: StorageProvider) { }
 
   ngOnInit(): void {
     this.getCharactersDetail(this.activatedRoute.snapshot.params["id"]);
   }
-
-
 
   /**
 	* @description Obtiene y los datos de un personaje por id
@@ -53,7 +49,7 @@ export class DetailsCharacterComponent implements OnInit {
       usuario: dataUser?.e_MAIL,
     }
 
-    this.favoriteService.addFavorite(data).then((resp)=>{
+    this.characterService.addFavorite(data).then(()=>{
       Swal.fire({
         icon: 'success',
         text: 'El personaje fue agregado correctamente a favoritos',

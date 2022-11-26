@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'home', component: HomeCharacterComponent },
       { path: 'characters/:id', component: DetailsCharacterComponent },
       { path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
+      //{ path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: 'login' }
     ]
   }

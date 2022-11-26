@@ -25,7 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsCharacterComponent } from './chracters/details/details-character.component';
 import { HomeCharacterComponent } from './chracters/home-character/home-character.component';
 
-
 @NgModule({
   declarations: [
     LoginComponent,

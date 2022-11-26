@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chanracters } from 'src/app/interfaces/characters';
 import { CharacterService } from 'src/app/services/character.service';
-import { FavoriteService } from 'src/app/services/favorite.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-favorites-character',
@@ -12,7 +12,7 @@ export class FavoritesCharacterComponent implements OnInit {
 
   charactersFavorites:Array<Chanracters> | null = [];
 
-  constructor(private favoriteService:FavoriteService,private characterService: CharacterService) { }
+  constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
     this.getAllFavorites();
@@ -22,13 +22,20 @@ export class FavoritesCharacterComponent implements OnInit {
 	* @description Obtiene el listado de id favoritos para obtener los personajes.
 	*/
   getAllFavorites(){
-    this.favoriteService.getAllFavorites().then(resp=>{
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor',
+    });
+    Swal.showLoading();
+    this.characterService.getAllFavorites().then(resp=>{
       resp.forEach((element:any) => {
         this.getCharactersDetail(element.id_caracter);
       });
     }).catch(error =>{
       console.log(error);
     })
+    Swal.close();
   }
 
   /**
@@ -41,5 +48,4 @@ export class FavoritesCharacterComponent implements OnInit {
       console.log(error);
     })
   }
-
 }

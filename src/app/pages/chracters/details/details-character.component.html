@@ -1,20 +1,26 @@
 
 <section class="row">
-    <div class="col-4 py-10" *ngFor="let item of characters">
+    <div class="col-12 py-10" *ngFor="let item of characters">
         <mat-card class="shadow">
-            <img mat-card-image [src]="item?.image" alt="Imagenes">
+            <div class="d-flex justify-content-center">
+              <img mat-card-image [src]="item?.image" class="w-50" alt="Imagenes">
+            </div>
             <mat-card-header>
-                <mat-card-title>{{item?.name}}</mat-card-title>
+                <mat-card-title>Detalles</mat-card-title>
+                <mat-card-subtitle>Nombre: {{item?.name}}</mat-card-subtitle>
                 <mat-card-subtitle>Especie: {{item?.species}}</mat-card-subtitle>
+                <mat-card-subtitle>Origen: {{item?.origin?.name}}</mat-card-subtitle>
                 <mat-card-subtitle>Ubicación: {{item?.location?.name}}</mat-card-subtitle>
+                <mat-card-subtitle>Genero: {{item?.gender}}</mat-card-subtitle>
+                <mat-card-subtitle>Status: {{item?.status}}</mat-card-subtitle>
               </mat-card-header>
             <mat-card-actions>
             <div class="d-flex justify-content-end">
-                <app-button 
-                    class="" 
-                    label="Guardar como favorito" 
+                <app-button
+                    class=""
+                    label="Guardar como favorito"
                     (outputClick)="addFavorite(item.id)">
-                </app-button>  
+                </app-button>
             </div>
             </mat-card-actions>
         </mat-card>
