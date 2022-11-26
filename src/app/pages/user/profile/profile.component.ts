@@ -55,12 +55,9 @@ export class ProfileComponent implements OnInit {
     }
 
     const formData:Register = {
-      nombre: form.name,
-      apellido: form.lastname,
-      doctoIdent: form.document,
+      name: form.name,
       email: form.email,
-      clave: form.password,
-      cia: "1"
+      password: form.password
     }
 
     this.authService.registrer(formData).then(() => {

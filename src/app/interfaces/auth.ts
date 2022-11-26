@@ -1,17 +1,12 @@
 export interface Register {
-    nombre:     string;
-    apellido:   string;
-    doctoIdent: string;
+    name:     string;
     email:      string;
-    clave:      string;
-    cia:        string;
+    password:    string;
 }
 
 export interface Login {
     password:  string;
-    companyId: string;
-    username:  string;
-    desdeMs:   boolean;
+    email:  string;
 }
 
 export interface Token {

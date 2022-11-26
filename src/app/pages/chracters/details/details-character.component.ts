@@ -44,9 +44,7 @@ export class DetailsCharacterComponent implements OnInit {
     Swal.showLoading();
     const dataUser =  JSON.parse( this.storage.getItem(EStorageKeys.usuario)!);
     const data = {
-      id_caracter: id,
-      observaciones: "N/A",
-      usuario: dataUser?.e_MAIL,
+      ref_api: id,
     }
 
     this.characterService.addFavorite(data).then(()=>{

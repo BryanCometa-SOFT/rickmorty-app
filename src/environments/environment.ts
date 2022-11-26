@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_RICKAN_DMORTY: 'https://rickandmortyapi.com/api/',
-	API_MIDASOFT: 'http://127.0.0.1:8000/api',
+	API_NETGRID: 'http://127.0.0.1:8000/api/',
 };
 
 /*

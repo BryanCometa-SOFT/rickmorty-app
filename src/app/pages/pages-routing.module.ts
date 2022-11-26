@@ -17,11 +17,10 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'home', component: HomeCharacterComponent },
-      { path: 'characters/:id', component: DetailsCharacterComponent },
+      { path: 'home', component: HomeCharacterComponent, canActivate: [AuthGuard] },
+      { path: 'characters/:id', component: DetailsCharacterComponent, canActivate: [AuthGuard] },
       { path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      //{ path: 'favorites', component: FavoritesCharacterComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: 'login' }
     ]
   }

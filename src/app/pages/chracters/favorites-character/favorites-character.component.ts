@@ -30,7 +30,7 @@ export class FavoritesCharacterComponent implements OnInit {
     Swal.showLoading();
     this.characterService.getAllFavorites().then(resp=>{
       resp.forEach((element:any) => {
-        this.getCharactersDetail(element.id_caracter);
+        this.getCharactersDetail(element.ref_api);
       });
     }).catch(error =>{
       console.log(error);

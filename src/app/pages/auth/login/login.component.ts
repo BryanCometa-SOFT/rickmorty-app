@@ -32,22 +32,20 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
 
     const form = this.form?.value;
-    
-    if(!this.form){ 
+
+    if(!this.form){
       Swal.fire({
         allowOutsideClick: false,
         icon: 'error',
         text: 'Todos los datos son obligatorios',
         timer: 5000
       });
-      return; 
+      return;
     }
 
     const formData:Login = {
-      username: form.email,
-      password: form.password,
-      companyId: "10",
-      desdeMs: true
+      email: form.email,
+      password: form.password
     }
 
     this.authService.login(formData).then(resp => {
@@ -56,9 +54,7 @@ export class LoginComponent implements OnInit {
         text: 'Sesión iniciada correctamente',
         timer: 5000
       });
-
       this.router.navigate(["/home"]);
-
     }).catch(error =>{
       console.log(error);
       Swal.fire({
@@ -68,8 +64,8 @@ export class LoginComponent implements OnInit {
         timer: 5000
       });
     })
-    
+
   }
-  
+
 
 }

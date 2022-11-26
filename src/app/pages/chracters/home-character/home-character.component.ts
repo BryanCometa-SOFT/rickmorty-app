@@ -85,11 +85,8 @@ export class HomeCharacterComponent implements OnInit {
       text: 'Espere por favor',
     });
     Swal.showLoading();
-    const dataUser =  JSON.parse( this.storage.getItem(EStorageKeys.usuario)!);
     const data = {
-      id_caracter: id,
-      observaciones: "N/A",
-      usuario: dataUser?.e_MAIL,
+      ref_api: id,
     }
 
     this.characterService.addFavorite(data).then((resp)=>{
