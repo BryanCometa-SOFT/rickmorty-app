@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
       Swal.fire({
         allowOutsideClick: false,
         icon: 'error',
-        text: 'Hubo un problema, por favor intente más tarde',
+        text: 'Datos invalidos',
         timer: 5000
       });
     })

@@ -82,7 +82,8 @@ export class BaseService {
 
       }).catch(error => {
         // Imprimo el error
-        throw new Error("Personaje resgistrado");
+        console.log(error.error);
+        throw new Error(error);
       });
   }
 

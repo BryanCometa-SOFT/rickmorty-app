@@ -4,7 +4,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs';
 
 
 /**
@@ -23,12 +22,6 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class AuthService extends BaseService {
-  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-
-  get isLoggedIn() {
-    return this.loggedIn.asObservable(); // {2}
-  }
-
 	/**
 	 * @Constructor
 	 * @param router Parametro con la navegacion
@@ -54,7 +47,6 @@ export class AuthService extends BaseService {
 		if (!result) {
       return false;
     }
-    this.loggedIn.next(true);
 		return true;
 	}
 
@@ -66,6 +58,10 @@ export class AuthService extends BaseService {
 	public async login(data:Login): Promise<Boolean> {
 		const result = await this.postMirror(`${environment.API_NETGRID}login`,data);
 
+    console.log("result")
+    console.log(result)
+
+
 		//Guardo el token y datos del usuario
 		this.storage.setItem(EStorageKeys.token, result['token'], false);
 		this.storage.setItem(EStorageKeys.usuario, result['data']);
@@ -74,7 +70,6 @@ export class AuthService extends BaseService {
       return false;
     }
 
-    this.loggedIn.next(true);
     // Retorno la respuesta
 		return result;
 	}
@@ -94,8 +89,14 @@ export class AuthService extends BaseService {
       return false;
     }
 
-    this.loggedIn.next(false);
     // Retorno la respuesta
 		return result;
+	}
+
+  /**
+	 * @description Verifica si el usuario está logueado
+	*/
+  public async isLoged() {
+    return this.storage.getItem(EStorageKeys.token);
 	}
 }

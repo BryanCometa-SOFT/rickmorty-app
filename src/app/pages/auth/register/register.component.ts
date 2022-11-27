@@ -67,14 +67,17 @@ export class RegisterComponent implements OnInit {
         timer: 5000
       });
 
-      this.router.navigate(["/home"]);
+      this.router.navigate(['home'])
+      .then(() => {
+        window.location.reload();
+      });
 
     }).catch(error =>{
       console.log(error);
       Swal.fire({
         allowOutsideClick: false,
         icon: 'error',
-        text: 'Hubo un problema, por favor intente más tarde',
+        text: 'Datos invalidos',
         timer: 5000
       });
     })

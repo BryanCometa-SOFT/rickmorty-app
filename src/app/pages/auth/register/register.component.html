@@ -6,21 +6,26 @@
                 <mat-form-field class="mt-10" appearance="fill">
                     <mat-label>Nombre</mat-label>
                     <input matInput placeholder="Perez" value="" formControlName="name" minlength="4">
+                    <mat-hint class="text-danger">Mínimo 4 caracteres</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="mt-10" appearance="fill">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="pepitoperez@gmail.com" value="" type="email" formControlName="email" minlength="4">
+                    <mat-hint class="text-danger">Debe ser una dirreción de email valida</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="mt-10" appearance="fill">
                     <mat-label>Clave</mat-label>
                     <input matInput placeholder="miClaveCompleja123" minlength="8" value="" formControlName="password">
+                    <mat-hint class="text-danger">Mínimo 8 caracteres</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="mt-10" appearance="fill">
                     <mat-label>Confirmar Clave</mat-label>
                     <input matInput placeholder="miClaveCompleja123" minlength="8" value="" formControlName="confirm_password">
+                    <mat-hint class="text-danger">Mínimo 8 caracteres</mat-hint>
                 </mat-form-field>
                 <app-button
                     label="Registrar"
+                    class="mt-2"
                     [disabled]="form.invalid">
                 </app-button>
             </form>
