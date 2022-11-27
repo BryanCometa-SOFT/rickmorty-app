@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class FavoritesCharacterComponent implements OnInit {
 
-  charactersFavorites:Array<Chanracters> | null = [];
+  charactersFavorites:Array<Chanracters>  = [];
 
   constructor(private characterService: CharacterService) { }
 

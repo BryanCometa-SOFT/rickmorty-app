@@ -98,12 +98,9 @@ export class BaseService {
       // Válido los parámetros
       if (!endpoint) { throw ('El parámetro endpoint es obligatorio'); }
 
-      // Creo el body
-      const body = { endpoint, token: this.token, body: payload };
-
 			// Genero la petición
 			this.httpClient
-				.put(endpoint, body, { headers: this.getHeaders() })
+				.put(endpoint, payload, { headers: this.getHeaders() })
 				.subscribe((response) => {
 
 					// Válido la respuesta

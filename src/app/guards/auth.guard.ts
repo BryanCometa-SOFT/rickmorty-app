@@ -34,10 +34,16 @@ export class AuthGuard implements CanActivate {
      const token: string = (await this.storage.getItem(EStorageKeys.token)) || '';
      const dataFavorite = await this.characterService.getAllFavorites();
 
-     if (!token || !dataFavorite) {
+     console.log(dataFavorite);
+     console.log(token);
+
+     if (!token || dataFavorite.exception) {
+      console.log("Hola si entro")
        this.router.navigate(['/login']);
        this.storage.removeItem(EStorageKeys.token);
        return false;
+     }else{
+      console.log("no entré")
      }
      return true;
    }

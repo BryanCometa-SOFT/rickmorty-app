@@ -2,7 +2,7 @@
   <mat-card-title>Actualizar perfil</mat-card-title>
   <mat-card-content>
       <div class="px-20">
-          <form class="row" [formGroup]="form" (ngSubmit)="submitRegister()">
+          <form class="row" [formGroup]="form" (ngSubmit)="updateUser()">
               <mat-form-field class="mt-10" appearance="fill">
                   <mat-label>Nombre</mat-label>
                   <input matInput placeholder="Perez" value="" formControlName="name" minlength="4">

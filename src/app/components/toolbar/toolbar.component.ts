@@ -64,6 +64,9 @@ export class ToolbarComponent implements OnInit {
     this.isValidLoged();
   }
 
+  /**
+	* @description Desabilita los botones del nav
+	*/
   isValidLoged(){
     if(this.storageProvider.getItem(EStorageKeys.token)){
       this.isLoged = true;

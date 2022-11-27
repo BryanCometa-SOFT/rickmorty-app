@@ -9,8 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService extends BaseService{
 
-  urlBase: string = "Seleccion/";
-
   constructor(public override httpClient: HttpClient) {
     /* Super */
 	  super(httpClient);
@@ -24,4 +22,17 @@ export class UserService extends BaseService{
 		// Retorno la respuesta
 		return result;
 	}
+
+  /**
+	 * @description Recibe los datos y actualiza el usuario
+	*/
+	public async updateUser(data:any): Promise<Boolean> {
+		const result = await this.putMirror(`${environment.API_NETGRID}user`,data);
+		// Retorno la respuesta
+		if (!result) {
+      return false;
+    }
+		return true;
+	}
+
 }

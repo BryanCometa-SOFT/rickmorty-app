@@ -1,14 +1,19 @@
 
 <h2>Mis personajes favoritos</h2>
-<section class="row">
-    <div class="col-4 py-10" *ngFor="let item of charactersFavorites">
-        <mat-card class="shadow">
-            <img mat-card-image [src]="item?.image" alt="Imagenes">
-            <mat-card-header>
-                <mat-card-title>{{item?.name}}</mat-card-title>
-                <mat-card-subtitle>Especie: {{item?.species}}</mat-card-subtitle>
-                <mat-card-subtitle>Ubicación: {{item?.location?.name}}</mat-card-subtitle>
-              </mat-card-header>
-        </mat-card>
-    </div>
+<section class="row" *ngIf="charactersFavorites.length > 0">
+  <div class="col-4 py-10"  *ngFor="let item of charactersFavorites">
+      <mat-card class="shadow">
+        <img mat-card-image [src]="item?.image" alt="Imagenes">
+        <mat-card-header>
+            <mat-card-title>{{item?.name}}</mat-card-title>
+            <mat-card-subtitle>Especie: {{item?.species}}</mat-card-subtitle>
+            <mat-card-subtitle>Ubicación: {{item?.location?.name}}</mat-card-subtitle>
+          </mat-card-header>
+      </mat-card>
+  </div>
+</section>
+<section class="row" *ngIf="charactersFavorites.length == 0">
+  <div class="col-12 py-10">
+     <h3>No hay favoritos disponibles</h3>
+  </div>
 </section>
