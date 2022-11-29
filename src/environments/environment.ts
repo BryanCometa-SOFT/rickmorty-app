@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_RICKAN_DMORTY: 'https://rickandmortyapi.com/api/',
-	API_NETGRID: 'https://hidden-sierra-18756.herokuapp.com/api/',
+	API_NETGRID: 'https://netgrid-api-production.up.railway.app/api/',
 };
 
 /*
